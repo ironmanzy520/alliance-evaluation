@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "alliance-evaluation"
+version = "1.0.0"
+description = "Evidence-linked Bond and Task evaluation of counselling dialogue text"
+readme = "README.md"
+authors = [{name = "Yang Zou"}]
+requires-python = ">=3.11,<3.14"
+dependencies = ["pydantic==2.10.3", "httpx==0.28.1"]
+
+[project.optional-dependencies]
+app = ["streamlit==1.54.0", "psutil==7.2.2"]
+dev = ["pytest==9.0.3", "build>=1.2,<2", "requests>=2.27,<3"]
+
+[project.urls]
+Repository = "https://github.com/ironmanzy520/alliance-evaluation"
+"Method and sources" = "https://github.com/ironmanzy520/alliance-evaluation/tree/main/framework"
+
+[project.scripts]
+alliance-eval = "alliance_eval.cli:main"
+
+[tool.hatch.build.targets.wheel]
+only-include = ["src/alliance_eval", "prompts", "schemas", "examples/demo"]
+dev-mode-dirs = ["src"]
+exclude = ["**/README.md", "**/__pycache__", "**/*.pyc", "**/.DS_Store"]
+
+[tool.hatch.build.targets.wheel.sources]
+"src" = ""
+"prompts" = "alliance_eval/resources/prompts"
+"schemas" = "alliance_eval/resources/schemas"
+"examples" = "alliance_eval/resources/examples"
+
+[tool.hatch.build.targets.sdist]
+only-include = ["pyproject.toml", "README.md", "AGENTS.md", ".gitignore", ".streamlit", "src", "prompts", "schemas", "framework", "docs", "tests", "examples", "skills", "data/README.md", "runs/README.md"]
+exclude = ["**/__pycache__", "**/*.pyc", "**/.DS_Store", ".streamlit/secrets.toml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

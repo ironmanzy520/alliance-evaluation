@@ -1,0 +1,444 @@
+{
+  "$defs": {
+    "ActivityAgreementRatedFinding": {
+      "additionalProperties": false,
+      "description": "Events of agreement or disagreement between both parties about a specific Activity or its steps.\n\nAgreement is an explicit core term in Bordin (1979) and Horvath and Greenberg (1989).\nClear agreement, partial agreement and clear disagreement are dialogue-text codes.",
+      "properties": {
+        "dimension": {
+          "const": "Activity agreement/disagreement",
+          "title": "Dimension",
+          "type": "string"
+        },
+        "activity_reference": {
+          "$ref": "#/$defs/ActivityReference"
+        },
+        "finding_status": {
+          "const": "rated",
+          "title": "Finding Status",
+          "type": "string"
+        },
+        "rating_label": {
+          "enum": [
+            "Clear activity disagreement",
+            "Partial or conditional activity agreement",
+            "Clear activity agreement"
+          ],
+          "title": "Rating Label",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceSpan"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dimension",
+        "activity_reference",
+        "finding_status",
+        "rating_label",
+        "evidence",
+        "reason"
+      ],
+      "title": "ActivityAgreementRatedFinding",
+      "type": "object"
+    },
+    "ActivityReference": {
+      "additionalProperties": false,
+      "description": "An Activity ID reused consistently within a sample, with a label favouring the source wording.",
+      "properties": {
+        "activity_id": {
+          "pattern": "^ACTIVITY_[0-9]{2,}$",
+          "title": "Activity Id",
+          "type": "string"
+        },
+        "activity_label": {
+          "minLength": 1,
+          "title": "Activity Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "activity_id",
+        "activity_label"
+      ],
+      "title": "ActivityReference",
+      "type": "object"
+    },
+    "ClarificationRatedFinding": {
+      "additionalProperties": false,
+      "description": "A project-synthesised result for clarity of an Activity and applicable responsibilities.\n\nThis dimension combines Activity and responsibility sources (Bordin, 1979;\nHorvath & Greenberg, 1989; Rohde et al., 2005; Ryum & Kazantzis, 2024).\nIts name and categories are project syntheses, not items from an original scale.",
+      "properties": {
+        "dimension": {
+          "const": "Activity and responsibility clarification",
+          "title": "Dimension",
+          "type": "string"
+        },
+        "activity_reference": {
+          "$ref": "#/$defs/ActivityReference"
+        },
+        "finding_status": {
+          "const": "rated",
+          "title": "Finding Status",
+          "type": "string"
+        },
+        "rating_label": {
+          "enum": [
+            "Unclear activity or applicable responsibilities",
+            "Partially specified activity or responsibilities",
+            "Clear activity and applicable responsibilities"
+          ],
+          "title": "Rating Label",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceSpan"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dimension",
+        "activity_reference",
+        "finding_status",
+        "rating_label",
+        "evidence",
+        "reason"
+      ],
+      "title": "ClarificationRatedFinding",
+      "type": "object"
+    },
+    "CounsellorBondSummaryEvidenceFinding": {
+      "additionalProperties": false,
+      "description": "Evidence available from a counsellor turn for the three summary-level Bond dimensions.",
+      "properties": {
+        "dimension": {
+          "enum": [
+            "Accurate Empathy",
+            "Therapist accepts/validates Patient",
+            "Mutual trust and respect"
+          ],
+          "title": "Dimension",
+          "type": "string"
+        },
+        "activity_reference": {
+          "title": "Activity Reference",
+          "type": "null"
+        },
+        "finding_status": {
+          "const": "evidence_only",
+          "title": "Finding Status",
+          "type": "string"
+        },
+        "rating_label": {
+          "title": "Rating Label",
+          "type": "null"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceSpan"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dimension",
+        "activity_reference",
+        "finding_status",
+        "rating_label",
+        "evidence",
+        "reason"
+      ],
+      "title": "CounsellorBondSummaryEvidenceFinding",
+      "type": "object"
+    },
+    "EvidenceSpan": {
+      "additionalProperties": false,
+      "description": "A verifiable evidence span containing only its source turn ID and exact quote.",
+      "properties": {
+        "turn_id": {
+          "minLength": 1,
+          "title": "Turn Id",
+          "type": "string"
+        },
+        "quote": {
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        }
+      },
+      "required": [
+        "turn_id",
+        "quote"
+      ],
+      "title": "EvidenceSpan",
+      "type": "object"
+    },
+    "GroundedRatedFinding": {
+      "additionalProperties": false,
+      "description": "Project turn-level categories for Grounded content uptake.\n\nThe no/mechanical/substantive distinction follows Hughes et al. (2025). The dimension name\nand three textual anchors are project adaptations and do not inherit the source study's validity.",
+      "properties": {
+        "dimension": {
+          "const": "Grounded content uptake",
+          "title": "Dimension",
+          "type": "string"
+        },
+        "activity_reference": {
+          "title": "Activity Reference",
+          "type": "null"
+        },
+        "finding_status": {
+          "const": "rated",
+          "title": "Finding Status",
+          "type": "string"
+        },
+        "rating_label": {
+          "enum": [
+            "Not grounded / not taken up",
+            "Mechanical or surface uptake",
+            "Substantive grounded uptake"
+          ],
+          "title": "Rating Label",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceSpan"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dimension",
+        "activity_reference",
+        "finding_status",
+        "rating_label",
+        "evidence",
+        "reason"
+      ],
+      "title": "GroundedRatedFinding",
+      "type": "object"
+    },
+    "NegotiationRatedFinding": {
+      "additionalProperties": false,
+      "description": "Counsellor-side negotiation outcomes for a specific Activity.\n\nActivity agreement and collaboration boundaries follow Bordin (1979), Horvath and Greenberg\n(1989), and Rohde, Feeny and Robins (2005). The three categories are project codes.",
+      "properties": {
+        "dimension": {
+          "const": "Collaborative activity negotiation",
+          "title": "Dimension",
+          "type": "string"
+        },
+        "activity_reference": {
+          "$ref": "#/$defs/ActivityReference"
+        },
+        "finding_status": {
+          "const": "rated",
+          "title": "Finding Status",
+          "type": "string"
+        },
+        "rating_label": {
+          "enum": [
+            "Counsellor-led without meaningful negotiation",
+            "Limited or procedural consultation",
+            "Collaborative activity negotiation"
+          ],
+          "title": "Rating Label",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceSpan"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dimension",
+        "activity_reference",
+        "finding_status",
+        "rating_label",
+        "evidence",
+        "reason"
+      ],
+      "title": "NegotiationRatedFinding",
+      "type": "object"
+    },
+    "RelevanceLinkageRatedFinding": {
+      "additionalProperties": false,
+      "description": "Whether the counsellor links an Activity to the current client material.\n\nRelevance is part of the Task core in Bordin (1979) and Horvath and Greenberg (1989).\nThe three categories of counsellor-text linkage are project codes.",
+      "properties": {
+        "dimension": {
+          "const": "Activity–client relevance linkage",
+          "title": "Dimension",
+          "type": "string"
+        },
+        "activity_reference": {
+          "$ref": "#/$defs/ActivityReference"
+        },
+        "finding_status": {
+          "const": "rated",
+          "title": "Finding Status",
+          "type": "string"
+        },
+        "rating_label": {
+          "enum": [
+            "No client-specific linkage",
+            "General rationale or broad linkage",
+            "Explicit client-specific linkage"
+          ],
+          "title": "Rating Label",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceSpan"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dimension",
+        "activity_reference",
+        "finding_status",
+        "rating_label",
+        "evidence",
+        "reason"
+      ],
+      "title": "RelevanceLinkageRatedFinding",
+      "type": "object"
+    },
+    "ResponsivenessRatedFinding": {
+      "additionalProperties": false,
+      "description": "Whether the counsellor uses new client feedback about an Activity in subsequent work.\n\nThe ballistic/responsive distinction follows Stiles, Honos-Webb and Surko (1998).\nThe three Activity-specific categories are project adaptations bounded by Ryum and Kazantzis (2024).",
+      "properties": {
+        "dimension": {
+          "const": "Activity-related responsiveness",
+          "title": "Dimension",
+          "type": "string"
+        },
+        "activity_reference": {
+          "$ref": "#/$defs/ActivityReference"
+        },
+        "finding_status": {
+          "const": "rated",
+          "title": "Finding Status",
+          "type": "string"
+        },
+        "rating_label": {
+          "enum": [
+            "Ballistic activity continuation",
+            "Feedback acknowledged but not used",
+            "Activity-responsive use of feedback"
+          ],
+          "title": "Rating Label",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceSpan"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dimension",
+        "activity_reference",
+        "finding_status",
+        "rating_label",
+        "evidence",
+        "reason"
+      ],
+      "title": "ResponsivenessRatedFinding",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Speaker-specific structured output for the current counsellor turn.",
+  "properties": {
+    "findings": {
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/GroundedRatedFinding"
+          },
+          {
+            "$ref": "#/$defs/NegotiationRatedFinding"
+          },
+          {
+            "$ref": "#/$defs/ClarificationRatedFinding"
+          },
+          {
+            "$ref": "#/$defs/RelevanceLinkageRatedFinding"
+          },
+          {
+            "$ref": "#/$defs/ResponsivenessRatedFinding"
+          },
+          {
+            "$ref": "#/$defs/ActivityAgreementRatedFinding"
+          },
+          {
+            "$ref": "#/$defs/CounsellorBondSummaryEvidenceFinding"
+          }
+        ]
+      },
+      "title": "Findings",
+      "type": "array"
+    }
+  },
+  "required": [
+    "findings"
+  ],
+  "title": "CounsellorTurnLLMOutput",
+  "type": "object"
+}

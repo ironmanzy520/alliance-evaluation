@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="500" viewBox="0 0 1040 500" role="img" aria-labelledby="title desc">
+  <title id="title">Alliance Evaluation workflow</title>
+  <desc id="desc">The original ten workflow nodes, arranged across two rows. Read the top row from left to right, then the lower row from right to left. Another turn returns to Activity identification; otherwise processing continues to summary, Core mapping and local results.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#46505c"/></marker>
+    <style>
+      .node {fill:#efebff;stroke:#9a89c5;stroke-width:1.4}
+      .edge {fill:none;stroke:#46505c;stroke-width:1.8;marker-end:url(#arrow);stroke-linejoin:round}
+      .label {font-family:Arial,Helvetica,sans-serif;font-size:18px;fill:#20252b;text-anchor:middle}
+      .edge-label {font-family:Arial,Helvetica,sans-serif;font-size:17px;fill:#36404b;text-anchor:middle}
+    </style>
+  </defs>
+  <rect width="1040" height="500" fill="#fff"/>
+  <g aria-label="Connections">
+    <path class="edge" data-from="A" data-to="B" d="M200 150H228"/>
+    <path class="edge" data-from="B" data-to="C" d="M400 150H428"/>
+    <path class="edge" data-from="C" data-to="D" d="M600 150H628"/>
+    <path class="edge" data-from="D" data-to="E" d="M800 150H828"/>
+    <path class="edge" data-from="E" data-to="F" d="M915 225V343"/>
+    <path class="edge" data-from="F" data-to="B" data-label="Yes" d="M1000 400H1020V25H315V73"/>
+    <path class="edge" data-from="F" data-to="G" data-label="No" d="M830 400H802"/>
+    <path class="edge" data-from="G" data-to="H" d="M630 400H602"/>
+    <path class="edge" data-from="H" data-to="I" d="M430 400H402"/>
+    <path class="edge" data-from="I" data-to="J" d="M230 400H202"/>
+    <rect x="921" y="12" width="46" height="26" fill="#fff"/>
+    <text class="edge-label" x="944" y="31">Yes</text>
+    <text class="edge-label" x="815" y="386">No</text>
+  </g>
+  <g class="label">
+    <g id="A"><rect class="node" x="30" y="75" width="170" height="150"/><text x="115" y="132"><tspan x="115">Prepared dialogues</tspan><tspan x="115" dy="24">and explicit</tspan><tspan x="115" dy="24">sample plan</tspan></text></g>
+    <g id="B"><rect class="node" x="230" y="75" width="170" height="150"/><text x="315" y="132"><tspan x="315">Identify new</tspan><tspan x="315" dy="24">Activities and</tspan><tspan x="315" dy="24">update registry</tspan></text></g>
+    <g id="C"><rect class="node" x="430" y="75" width="170" height="150"/><text x="515" y="120"><tspan x="515">Evaluate turn-level</tspan><tspan x="515" dy="24">dimensions and</tspan><tspan x="515" dy="24">collect summary</tspan><tspan x="515" dy="24">evidence</tspan></text></g>
+    <g id="D"><rect class="node" x="630" y="75" width="170" height="150"/><text x="715" y="120"><tspan x="715">Validate structure,</tspan><tspan x="715" dy="24">identities,</tspan><tspan x="715" dy="24">quotations</tspan><tspan x="715" dy="24">and ownership</tspan></text></g>
+    <g id="E"><rect class="node" x="830" y="75" width="170" height="150"/><text x="915" y="132"><tspan x="915">Save Bond and</tspan><tspan x="915" dy="24">Task results and</tspan><tspan x="915" dy="24">failures separately</tspan></text></g>
+    <g id="F"><path class="node" d="M915 345L1000 400L915 455L830 400Z"/><text x="915" y="406">Another turn?</text></g>
+    <g id="G"><rect class="node" x="630" y="325" width="170" height="150"/><text x="715" y="367"><tspan x="715">Summarise three</tspan><tspan x="715" dy="24">Bond dimensions</tspan><tspan x="715" dy="24">and each Activity's</tspan><tspan x="715" dy="24">engagement</tspan></text></g>
+    <g id="H"><rect class="node" x="430" y="325" width="170" height="150"/><text x="515" y="367"><tspan x="515">Validate summaries</tspan><tspan x="515" dy="24">and record</tspan><tspan x="515" dy="24">completeness</tspan><tspan x="515" dy="24">by side</tspan></text></g>
+    <g id="I"><rect class="node" x="230" y="325" width="170" height="150"/><text x="315" y="379"><tspan x="315">Apply fixed</tspan><tspan x="315" dy="24">Core evidence</tspan><tspan x="315" dy="24">mappings</tspan></text></g>
+    <g id="J"><rect class="node" x="30" y="325" width="170" height="150"/><text x="115" y="367"><tspan x="115">Local run: sources,</tspan><tspan x="115" dy="24">evidence, results</tspan><tspan x="115" dy="24">and descriptive</tspan><tspan x="115" dy="24">statistics</tspan></text></g>
+  </g>
+</svg>

@@ -1,0 +1,152 @@
+{
+  "$defs": {
+    "CounsellorBondSummaryEvidenceFinding": {
+      "additionalProperties": false,
+      "description": "Evidence available from a counsellor turn for the three summary-level Bond dimensions.",
+      "properties": {
+        "dimension": {
+          "enum": [
+            "Accurate Empathy",
+            "Therapist accepts/validates Patient",
+            "Mutual trust and respect"
+          ],
+          "title": "Dimension",
+          "type": "string"
+        },
+        "activity_reference": {
+          "title": "Activity Reference",
+          "type": "null"
+        },
+        "finding_status": {
+          "const": "evidence_only",
+          "title": "Finding Status",
+          "type": "string"
+        },
+        "rating_label": {
+          "title": "Rating Label",
+          "type": "null"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceSpan"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dimension",
+        "activity_reference",
+        "finding_status",
+        "rating_label",
+        "evidence",
+        "reason"
+      ],
+      "title": "CounsellorBondSummaryEvidenceFinding",
+      "type": "object"
+    },
+    "EvidenceSpan": {
+      "additionalProperties": false,
+      "description": "A verifiable evidence span containing only its source turn ID and exact quote.",
+      "properties": {
+        "turn_id": {
+          "minLength": 1,
+          "title": "Turn Id",
+          "type": "string"
+        },
+        "quote": {
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        }
+      },
+      "required": [
+        "turn_id",
+        "quote"
+      ],
+      "title": "EvidenceSpan",
+      "type": "object"
+    },
+    "GroundedRatedFinding": {
+      "additionalProperties": false,
+      "description": "Project turn-level categories for Grounded content uptake.\n\nThe no/mechanical/substantive distinction follows Hughes et al. (2025). The dimension name\nand three textual anchors are project adaptations and do not inherit the source study's validity.",
+      "properties": {
+        "dimension": {
+          "const": "Grounded content uptake",
+          "title": "Dimension",
+          "type": "string"
+        },
+        "activity_reference": {
+          "title": "Activity Reference",
+          "type": "null"
+        },
+        "finding_status": {
+          "const": "rated",
+          "title": "Finding Status",
+          "type": "string"
+        },
+        "rating_label": {
+          "enum": [
+            "Not grounded / not taken up",
+            "Mechanical or surface uptake",
+            "Substantive grounded uptake"
+          ],
+          "title": "Rating Label",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceSpan"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dimension",
+        "activity_reference",
+        "finding_status",
+        "rating_label",
+        "evidence",
+        "reason"
+      ],
+      "title": "GroundedRatedFinding",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Bond-only findings for a counsellor turn when no Activity has been registered.",
+  "properties": {
+    "findings": {
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/GroundedRatedFinding"
+          },
+          {
+            "$ref": "#/$defs/CounsellorBondSummaryEvidenceFinding"
+          }
+        ]
+      },
+      "title": "Findings",
+      "type": "array"
+    }
+  },
+  "required": [
+    "findings"
+  ],
+  "title": "CounsellorBondOnlyTurnLLMOutput",
+  "type": "object"
+}

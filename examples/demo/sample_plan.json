@@ -1,0 +1,23 @@
+{
+  "sample_version": "scripted-illustration",
+  "items": [
+    {
+      "source_file": "dialogue.jsonl",
+      "dialogue_id": "fictional-scripted-demo-001",
+      "start_turn_index": null,
+      "end_turn_index": null
+    },
+    {
+      "source_file": "dialogue.jsonl",
+      "dialogue_id": "fictional-scripted-demo-002",
+      "start_turn_index": null,
+      "end_turn_index": null
+    },
+    {
+      "source_file": "dialogue.jsonl",
+      "dialogue_id": "fictional-scripted-demo-003",
+      "start_turn_index": null,
+      "end_turn_index": null
+    }
+  ]
+}

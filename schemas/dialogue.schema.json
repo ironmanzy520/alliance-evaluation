@@ -1,0 +1,71 @@
+{
+  "$defs": {
+    "InputTurn": {
+      "additionalProperties": true,
+      "description": "Minimal turn contract; extra source annotations and original roles do not define ratings.",
+      "properties": {
+        "turn_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Turn Id",
+          "type": "string"
+        },
+        "turn_index": {
+          "minimum": 0,
+          "title": "Turn Index",
+          "type": "integer"
+        },
+        "role": {
+          "enum": [
+            "counsellor",
+            "client",
+            "other"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "text": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "turn_id",
+        "turn_index",
+        "role",
+        "text"
+      ],
+      "title": "InputTurn",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "description": "A complete dialogue, independent of dataset, language or therapeutic approach.",
+  "properties": {
+    "dialogue_id": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Dialogue Id",
+      "type": "string"
+    },
+    "turns": {
+      "items": {
+        "$ref": "#/$defs/InputTurn"
+      },
+      "minItems": 1,
+      "title": "Turns",
+      "type": "array"
+    }
+  },
+  "required": [
+    "dialogue_id",
+    "turns"
+  ],
+  "title": "InputDialogue",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:alliance-evaluation:dialogue",
+  "$comment": "Runtime validation additionally requires unique turn_id values and strictly increasing turn_index values in input order. Batch conversion requires unique dialogue_id values. Additional source metadata is preserved."
+}

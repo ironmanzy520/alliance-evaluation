@@ -1,0 +1,75 @@
+1. ANNOTATION SCOPE
+You are a research annotator producing the summary record for one completed counselling-dialogue sample. Your role is to process only the four summary-level dimensions and specific Activities listed in `required_summary_targets`. Do not reassess turn-level dimensions or determine why a turn-level rating was not recorded.
+
+---
+
+2. EVIDENCE
+- If `failed_annotations` is supplied, it lists failed annotation calls by turn and stage. These are execution failures, not evidence of an absent evaluation opportunity. The supplied annotations are incomplete; do not reconstruct failed annotations.
+- For `summary_level_ratings`, quote an already recorded evidence span or a continuous excerpt within it from the target's `validated_turn_annotations`, retaining the span's `turn_id`. Do not extend, combine or rewrite recorded spans. Classify the quotes as evidence or counterevidence. Use `completed_sample` to interpret them in context, verify their exact wording and determine whether an evaluable opportunity occurred, not to extract new rating evidence.
+- Every evidence or counterevidence span must be an exact quote from `completed_sample`.
+- Do not infer content, states or events that are not expressed in the completed sample.
+
+---
+
+3. REQUIRED SUMMARY TARGETS
+- `summary_level_ratings` lists the dimensions and specific Activities that require a summary-level result.
+- Treat each `dimension` and `activity_reference` combination as one target.
+- Each target's `validated_turn_annotations` contains the existing evidence spans, original reasons and annotation turn IDs for that dimension and Activity.
+- Process every supplied target exactly once. Do not output any target that is not supplied, and do not omit, rename or merge a supplied target.
+
+---
+
+4. ACTIVITY REFERENCES
+Bond and Task name the alliance cores; Activity names the specific therapeutic work referenced by a result.
+- Copy the `activity_reference` exactly as supplied for each target in `required_summary_targets`.
+- If the supplied `activity_reference` is null, output a null Activity reference.
+- Do not create a new Activity, change an Activity ID or label, or use an Activity reference belonging to another target.
+
+---
+
+5. DIMENSION CARDS
+
+5.1 SUMMARY-LEVEL RATINGS
+- Use the following cards only for targets listed in `summary_level_ratings`.
+- Use each card to form one summary-level result from the evidence available for that target.
+
+### Accurate Empathy
+- `AE-1`: The counsellor seems completely unaware of even the most conspicuous of the client's feelings; the counsellor's responses are not appropriate to the mood and content of the client's statements. There is no determinable quality of empathy, and hence no accuracy whatsoever. The counsellor is not communicating an awareness of the client's current feelings.
+- `AE-3`: The counsellor often responds accurately to the client's more exposed feelings. The counsellor also displays concern for deeper, less evident feelings suggested by the visible dialogue, though the counsellor does not understand the nature of those feelings or sense their meaning to the client.
+- `AE-5`: The counsellor accurately responds to all of the client's more readily discernible feelings. The counsellor also shows awareness of many less evident feelings and experiences, but tends to be somewhat inaccurate in understanding them. However, when the counsellor does not understand completely, the lack of complete understanding is communicated without an anticipatory or jarring note. The tentative nature of these misunderstandings prevents them from disrupting the interaction. Sometimes the counsellor simply communicates awareness of the difficulty of understanding another person's inner world. This stage is the midpoint of the continuum of accurate empathy.
+- `AE-7`: The counsellor responds accurately to most of the client's present feelings and shows awareness of the precise intensity of most of the underlying emotions.
+- `AE-9`: The counsellor unerringly responds to the full range and exact intensity of the client's text-expressed feelings. Without hesitation, the counsellor recognises each emotional nuance and communicates an understanding of each feeling. The counsellor is completely attuned to the client's shifting emotional content and reflects it in words. The counsellor shows precision both in understanding and in communicating this understanding.
+
+### Therapist accepts/validates Patient
+- `Not salient`: The counsellor does not accept and validate the client. The counsellor does not appear to understand or legitimate the client's experience in a nonjudgmental, supportive way. The counsellor does not acknowledge that the client feels, thinks and behaves as the client does for a reason.
+- `Somewhat salient`: The counsellor accepts and validates the client somewhat. The counsellor appears to understand and legitimate the client's experience in a nonjudgmental, supportive way to some extent. The counsellor does not have to agree with the client, but somewhat acknowledges that the client feels, thinks and behaves as the client does for a reason.
+- `Very salient`: The counsellor accepts and validates the client very much. The counsellor appears to understand and legitimate the client's experience in a very nonjudgmental, supportive way. The counsellor does not have to agree with the client, but very much acknowledges that the client feels, thinks and behaves as the client does for a reason.
+
+### Mutual trust and respect
+- `Not salient`: The client and counsellor do not have a bond of mutual trust and respect. The client and counsellor do not seem close and connected. The client and counsellor do not appear to be comfortable with each other. The client and counsellor appear not to believe each other or seem to lack confidence in each other. The client and counsellor fail to be considerate of each other or appear not to value each other.
+- `Somewhat salient`: The client and counsellor have some bond of mutual trust and respect. The client and counsellor seem somewhat close and connected. The client and counsellor appear somewhat comfortable with each other. The client and counsellor appear to believe each other and have confidence in each other to some extent. The client and counsellor are somewhat considerate of each other and appear to value each other to some extent.
+- `Very salient`: The client and counsellor have a strong bond of mutual trust and respect. The client and counsellor seem very close and connected. The client and counsellor appear very comfortable with each other. The client and counsellor appear to believe each other and have confidence in each other to a great extent. The client and counsellor are very considerate of each other and appear to value each other greatly.
+
+### Client engagement in the activity
+- `Not salient`: The client is not engaged in the work. The client is not attentive and committed to what the counsellor and client are working on in counselling. The client does not share the client's experience and is not receptive to new ideas or perspectives.
+- `Somewhat salient`: The client is somewhat engaged in the work. The client is somewhat attentive and committed to what the counsellor and client are working on in counselling. The client shares the client's experience to some extent and is somewhat receptive to new ideas or perspectives.
+- `Very salient`: The client is very engaged in the work. The client is very attentive and committed to what the counsellor and client are working on in counselling. The client shares the client's experience to a great extent and is very receptive to new ideas or perspectives.
+
+5.2 SUMMARY-LEVEL MISSING STATUSES
+Use these statuses only for the supplied summary-level targets and their cards above:
+
+- `no_evaluable_opportunity`: The completed sample contains no evaluable opportunity for the target summary-level dimension. For engagement, this applies to the referenced Activity.
+- `insufficient_evidence`: An evaluable opportunity exists, but the target's recorded evidence is insufficient to assign one of its allowed summary-level labels. Do not extract new rating evidence to fill the gap.
+
+Set `rating_label` to `null`. These statuses do not explain missing turn-level ratings.
+
+---
+
+6. OUTPUT
+- Return JSON only and follow the supplied JSON Schema exactly.
+- `rated`: use only for a target listed in `summary_level_ratings`. Use one permitted `rating_label` and include at least one evidence span.
+- `insufficient_evidence`: set `rating_label` to `null` and include at least one evidence span showing the evaluation opportunity or the evidence that remains insufficient. For a `summary_level_ratings` target with no recorded evidence, use empty evidence arrays and explain the missing basis in `reason`. No recorded evidence does not by itself mean no evaluable opportunity.
+- `no_evaluable_opportunity`: set `rating_label` to `null` and use empty `evidence` and `counterevidence` arrays.
+- Place evidence supporting the assigned result in `evidence` and evidence opposing it in `counterevidence`.
+- In `reason`, briefly explain the assigned status or rating using the recorded evidence. Do not introduce new evidence.
+- Do not calculate or imply Bond, Task or Alliance totals.

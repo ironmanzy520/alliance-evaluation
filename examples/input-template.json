@@ -1,0 +1,21 @@
+{
+  "dialogue_id": "fictional-input-template-001",
+  "metadata": {
+    "fictional": true,
+    "purpose": "input_format_template_only"
+  },
+  "turns": [
+    {
+      "turn_id": "fictional-turn-01",
+      "turn_index": 0,
+      "role": "counsellor",
+      "text": "Would you like a short pause?"
+    },
+    {
+      "turn_id": "fictional-turn-02",
+      "turn_index": 1,
+      "role": "client",
+      "text": "Yes, a moment would help."
+    }
+  ]
+}

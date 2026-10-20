@@ -1,0 +1,736 @@
+{
+"fictional-scripted-demo-001": [
+  {
+    "response_model": "ActivityIdentificationLLMOutput",
+    "current_turn_id": "demo-01",
+    "output": {
+      "new_activities": []
+    }
+  },
+  {
+    "response_model": "ClientBondOnlyTurnLLMOutput",
+    "current_turn_id": "demo-01",
+    "output": {
+      "findings": []
+    }
+  },
+  {
+    "response_model": "ActivityIdentificationLLMOutput",
+    "current_turn_id": "demo-02",
+    "output": {
+      "new_activities": []
+    }
+  },
+  {
+    "response_model": "CounsellorBondOnlyTurnLLMOutput",
+    "current_turn_id": "demo-02",
+    "output": {
+      "findings": [
+        {
+          "dimension": "Accurate Empathy",
+          "activity_reference": null,
+          "finding_status": "evidence_only",
+          "rating_label": null,
+          "evidence": [
+            {
+              "turn_id": "demo-02",
+              "quote": "You want to be dependable, and you are afraid that asking for time will be read as not caring."
+            }
+          ],
+          "reason": "Preset illustration: the response reflects the stated fear of appearing to avoid work; a full sample anchor is not inferred from this single reflection."
+        },
+        {
+          "dimension": "Therapist accepts/validates Patient",
+          "activity_reference": null,
+          "finding_status": "evidence_only",
+          "rating_label": null,
+          "evidence": [
+            {
+              "turn_id": "demo-02",
+              "quote": "With that worry, freezing is understandable; it does not make you lazy."
+            }
+          ],
+          "reason": "Preset illustration: the response makes the difficulty understandable without judging the client."
+        },
+        {
+          "dimension": "Grounded content uptake",
+          "activity_reference": null,
+          "finding_status": "rated",
+          "rating_label": "Substantive grounded uptake",
+          "evidence": [
+            {
+              "turn_id": "demo-01",
+              "quote": "I worry that asking for more time will sound like I am avoiding the work."
+            },
+            {
+              "turn_id": "demo-02",
+              "quote": "You want to be dependable, and you are afraid that asking for time will be read as not caring."
+            }
+          ],
+          "reason": "Preset illustration: the counsellor uses the client's specific concern about how the request may be perceived."
+        }
+      ]
+    }
+  },
+  {
+    "response_model": "ActivityIdentificationLLMOutput",
+    "current_turn_id": "demo-03",
+    "output": {
+      "new_activities": []
+    }
+  },
+  {
+    "response_model": "ClientBondOnlyTurnLLMOutput",
+    "current_turn_id": "demo-03",
+    "output": {
+      "findings": [
+        {
+          "dimension": "Client confirmation/disconfirmation",
+          "activity_reference": null,
+          "finding_status": "rated",
+          "rating_label": "Clear confirmation",
+          "evidence": [
+            {
+              "turn_id": "demo-02",
+              "quote": "You want to be dependable, and you are afraid that asking for time will be read as not caring."
+            },
+            {
+              "turn_id": "demo-03",
+              "quote": "Yes, that is the worry."
+            }
+          ],
+          "reason": "Preset illustration: the client explicitly confirms the counsellor's preceding understanding."
+        },
+        {
+          "dimension": "Client-perceived acceptance",
+          "activity_reference": null,
+          "finding_status": "rated",
+          "rating_label": "Clear perceived acceptance",
+          "evidence": [
+            {
+              "turn_id": "demo-03",
+              "quote": "I feel understood when you separate being stuck from being lazy."
+            }
+          ],
+          "reason": "Preset illustration: the client directly states how the counsellor's stance is experienced."
+        }
+      ]
+    }
+  },
+  {
+    "response_model": "ActivityIdentificationLLMOutput",
+    "current_turn_id": "demo-04",
+    "output": {
+      "new_activities": [
+        {
+          "activity_id": "ACTIVITY_01",
+          "activity_label": "Draft one sentence requesting more time"
+        }
+      ]
+    }
+  },
+  {
+    "response_model": "CounsellorTurnLLMOutput",
+    "current_turn_id": "demo-04",
+    "output": {
+      "findings": []
+    }
+  },
+  {
+    "response_model": "ActivityIdentificationLLMOutput",
+    "current_turn_id": "demo-05",
+    "output": {
+      "new_activities": []
+    }
+  },
+  {
+    "response_model": "ClientTurnLLMOutput",
+    "current_turn_id": "demo-05",
+    "output": {
+      "findings": [
+        {
+          "dimension": "Activity agreement/disagreement",
+          "activity_reference": {
+            "activity_id": "ACTIVITY_01",
+            "activity_label": "Draft one sentence requesting more time"
+          },
+          "finding_status": "rated",
+          "rating_label": "Partial or conditional activity agreement",
+          "evidence": [
+            {
+              "turn_id": "demo-04",
+              "quote": "We could write it or practise saying it; which would be more useful to you?"
+            },
+            {
+              "turn_id": "demo-05",
+              "quote": "I would rather write it first; saying it aloud feels too much today."
+            }
+          ],
+          "reason": "Preset illustration: the client accepts drafting in writing but does not accept speaking practice."
+        },
+        {
+          "dimension": "Client-expressed activity relevance",
+          "activity_reference": {
+            "activity_id": "ACTIVITY_01",
+            "activity_label": "Draft one sentence requesting more time"
+          },
+          "finding_status": "rated",
+          "rating_label": "Clear client-perceived relevance",
+          "evidence": [
+            {
+              "turn_id": "demo-05",
+              "quote": "A written request fits the update I need to send tomorrow."
+            }
+          ],
+          "reason": "Preset illustration: the client links this specific work to the update they need to send."
+        }
+      ]
+    }
+  },
+  {
+    "response_model": "ActivityIdentificationLLMOutput",
+    "current_turn_id": "demo-06",
+    "output": {
+      "new_activities": []
+    }
+  },
+  {
+    "response_model": "CounsellorTurnLLMOutput",
+    "current_turn_id": "demo-06",
+    "output": {
+      "findings": [
+        {
+          "dimension": "Collaborative activity negotiation",
+          "activity_reference": {
+            "activity_id": "ACTIVITY_01",
+            "activity_label": "Draft one sentence requesting more time"
+          },
+          "finding_status": "rated",
+          "rating_label": "Collaborative activity negotiation",
+          "evidence": [
+            {
+              "turn_id": "demo-05",
+              "quote": "I would rather write it first; saying it aloud feels too much today."
+            },
+            {
+              "turn_id": "demo-06",
+              "quote": "Then we will write, and leave speaking practice aside."
+            }
+          ],
+          "reason": "Preset illustration: the client's preference changes the proposed way of working."
+        },
+        {
+          "dimension": "Activity and responsibility clarification",
+          "activity_reference": {
+            "activity_id": "ACTIVITY_01",
+            "activity_label": "Draft one sentence requesting more time"
+          },
+          "finding_status": "rated",
+          "rating_label": "Clear activity and applicable responsibilities",
+          "evidence": [
+            {
+              "turn_id": "demo-06",
+              "quote": "You choose the extra time you need and write one sentence; I will help check that the request is clear."
+            }
+          ],
+          "reason": "Preset illustration: the immediate written activity and each participant's applicable role are stated."
+        }
+      ]
+    }
+  },
+  {
+    "response_model": "ActivityIdentificationLLMOutput",
+    "current_turn_id": "demo-07",
+    "output": {
+      "new_activities": []
+    }
+  },
+  {
+    "response_model": "ClientTurnLLMOutput",
+    "current_turn_id": "demo-07",
+    "output": {
+      "findings": [
+        {
+          "dimension": "Client engagement in the activity",
+          "activity_reference": {
+            "activity_id": "ACTIVITY_01",
+            "activity_label": "Draft one sentence requesting more time"
+          },
+          "finding_status": "evidence_only",
+          "rating_label": null,
+          "evidence": [
+            {
+              "turn_id": "demo-07",
+              "quote": "I wrote: Could I send the draft on Thursday instead of Tuesday so I can check the figures?"
+            }
+          ],
+          "reason": "Preset illustration: the client supplies a written sentence that carries out the agreed activity."
+        },
+        {
+          "dimension": "Client-expressed activity efficacy",
+          "activity_reference": {
+            "activity_id": "ACTIVITY_01",
+            "activity_label": "Draft one sentence requesting more time"
+          },
+          "finding_status": "rated",
+          "rating_label": "Mixed or uncertain client-perceived efficacy",
+          "evidence": [
+            {
+              "turn_id": "demo-07",
+              "quote": "I am not sure yet whether making this request will help."
+            }
+          ],
+          "reason": "Preset illustration: the client explicitly expresses uncertainty about helpfulness; this is not an outcome measure."
+        }
+      ]
+    }
+  },
+  {
+    "response_model": "ActivityIdentificationLLMOutput",
+    "current_turn_id": "demo-08",
+    "output": {
+      "new_activities": []
+    }
+  },
+  {
+    "response_model": "CounsellorTurnLLMOutput",
+    "current_turn_id": "demo-08",
+    "output": {
+      "findings": []
+    }
+  },
+  {
+    "response_model": "SummaryLLMOutput",
+    "current_turn_id": null,
+    "output": {
+      "results": [
+        {
+          "dimension": "Accurate Empathy",
+          "activity_reference": null,
+          "summary_status": "insufficient_evidence",
+          "rating_label": null,
+          "evidence": [
+            {
+              "turn_id": "demo-02",
+              "quote": "You want to be dependable, and you are afraid that asking for time will be read as not caring."
+            }
+          ],
+          "counterevidence": [],
+          "reason": "Preset illustration: one relevant reflection is preserved, but this short exchange is not used to assign a representative Accurate Empathy anchor."
+        },
+        {
+          "dimension": "Therapist accepts/validates Patient",
+          "activity_reference": null,
+          "summary_status": "rated",
+          "rating_label": "Somewhat salient",
+          "evidence": [
+            {
+              "turn_id": "demo-02",
+              "quote": "With that worry, freezing is understandable; it does not make you lazy."
+            }
+          ],
+          "counterevidence": [],
+          "reason": "Preset illustration: the saved non-judgemental validation supports a limited acceptance illustration within this short sample."
+        },
+        {
+          "dimension": "Mutual trust and respect",
+          "activity_reference": null,
+          "summary_status": "insufficient_evidence",
+          "rating_label": null,
+          "evidence": [],
+          "counterevidence": [],
+          "reason": "Preset illustration: no mutual-trust-and-respect evidence was registered. A supportive response and a preference alone do not establish reciprocal trust; no dyadic rating is assigned."
+        },
+        {
+          "dimension": "Client engagement in the activity",
+          "activity_reference": {
+            "activity_id": "ACTIVITY_01",
+            "activity_label": "Draft one sentence requesting more time"
+          },
+          "summary_status": "rated",
+          "rating_label": "Somewhat salient",
+          "evidence": [
+            {
+              "turn_id": "demo-07",
+              "quote": "I wrote: Could I send the draft on Thursday instead of Tuesday so I can check the figures?"
+            }
+          ],
+          "counterevidence": [],
+          "reason": "Preset illustration: the saved written contribution shows engagement in this specific activity. It does not establish responsibility acceptance or therapeutic effectiveness."
+        }
+      ]
+    }
+  }
+],
+"fictional-scripted-demo-002": [
+  {
+    "response_model": "ActivityIdentificationLLMOutput",
+    "current_turn_id": "demo2-01",
+    "output": {"new_activities": []}
+  },
+  {
+    "response_model": "ClientBondOnlyTurnLLMOutput",
+    "current_turn_id": "demo2-01",
+    "output": {"findings": []}
+  },
+  {
+    "response_model": "ActivityIdentificationLLMOutput",
+    "current_turn_id": "demo2-02",
+    "output": {"new_activities": []}
+  },
+  {
+    "response_model": "CounsellorBondOnlyTurnLLMOutput",
+    "current_turn_id": "demo2-02",
+    "output": {
+      "findings": [
+        {
+          "dimension": "Accurate Empathy",
+          "activity_reference": null,
+          "finding_status": "evidence_only",
+          "rating_label": null,
+          "evidence": [{"turn_id": "demo2-02", "quote": "The two worries feel equally urgent tonight, even though the bill is not here yet."}],
+          "reason": "Preset illustration: the response reflects the client's expressed sense that both worries need attention tonight; a representative empathy anchor is not inferred from one reflection."
+        },
+        {
+          "dimension": "Therapist accepts/validates Patient",
+          "activity_reference": null,
+          "finding_status": "evidence_only",
+          "rating_label": null,
+          "evidence": [{"turn_id": "demo2-02", "quote": "Feeling overwhelmed makes sense when both seem to demand an answer at once."}],
+          "reason": "Preset illustration: the counsellor treats the client's feeling as understandable in the stated circumstances."
+        }
+      ]
+    }
+  },
+  {
+    "response_model": "ActivityIdentificationLLMOutput",
+    "current_turn_id": "demo2-03",
+    "output": {"new_activities": [{"activity_id": "ACTIVITY_01", "activity_label": "Write a two-group note for tonight and tomorrow"}]}
+  },
+  {
+    "response_model": "ClientTurnLLMOutput",
+    "current_turn_id": "demo2-03",
+    "output": {"findings": []}
+  },
+  {
+    "response_model": "ActivityIdentificationLLMOutput",
+    "current_turn_id": "demo2-04",
+    "output": {"new_activities": []}
+  },
+  {
+    "response_model": "CounsellorTurnLLMOutput",
+    "current_turn_id": "demo2-04",
+    "output": {
+      "findings": [
+        {
+          "dimension": "Activity agreement/disagreement",
+          "activity_reference": {"activity_id": "ACTIVITY_01", "activity_label": "Write a two-group note for tonight and tomorrow"},
+          "finding_status": "rated",
+          "rating_label": "Clear activity agreement",
+          "evidence": [
+            {"turn_id": "demo2-03", "quote": "Could we sort these worries into what I can do tonight and what must wait until tomorrow? I would like to put the two groups in a short note."},
+            {"turn_id": "demo2-04", "quote": "Yes, let us make that two-group note."}
+          ],
+          "reason": "Preset illustration: the counsellor explicitly accepts the specific written activity proposed by the client."
+        },
+        {
+          "dimension": "Activity and responsibility clarification",
+          "activity_reference": {"activity_id": "ACTIVITY_01", "activity_label": "Write a two-group note for tonight and tomorrow"},
+          "finding_status": "rated",
+          "rating_label": "Clear activity and applicable responsibilities",
+          "evidence": [{"turn_id": "demo2-04", "quote": "Put one action you can take tonight in the first group, and the worry that must wait in the second; I will help if a group is unclear."}],
+          "reason": "Preset illustration: the two entries and the counsellor's supporting role make the short writing activity clear."
+        },
+        {
+          "dimension": "Activity–client relevance linkage",
+          "activity_reference": {"activity_id": "ACTIVITY_01", "activity_label": "Write a two-group note for tonight and tomorrow"},
+          "finding_status": "rated",
+          "rating_label": "Explicit client-specific linkage",
+          "evidence": [
+            {"turn_id": "demo2-01", "quote": "At bedtime I worry about missing my morning train and about a repair bill that has not arrived."},
+            {"turn_id": "demo2-04", "quote": "This keeps the train preparation separate from the bill you cannot check tonight."}
+          ],
+          "reason": "Preset illustration: the counsellor connects the two-group activity to the client's particular train and bill concerns."
+        }
+      ]
+    }
+  },
+  {
+    "response_model": "ActivityIdentificationLLMOutput",
+    "current_turn_id": "demo2-05",
+    "output": {"new_activities": []}
+  },
+  {
+    "response_model": "ClientTurnLLMOutput",
+    "current_turn_id": "demo2-05",
+    "output": {
+      "findings": [
+        {
+          "dimension": "Client engagement in the activity",
+          "activity_reference": {"activity_id": "ACTIVITY_01", "activity_label": "Write a two-group note for tonight and tomorrow"},
+          "finding_status": "evidence_only",
+          "rating_label": null,
+          "evidence": [{"turn_id": "demo2-05", "quote": "My note says: Tonight, set the alarm. Tomorrow, ask about the repair bill."}],
+          "reason": "Preset illustration: the client supplies both entries of the agreed note, showing a concrete contribution to this activity."
+        },
+        {
+          "dimension": "Client-expressed activity efficacy",
+          "activity_reference": {"activity_id": "ACTIVITY_01", "activity_label": "Write a two-group note for tonight and tomorrow"},
+          "finding_status": "rated",
+          "rating_label": "Clear client-perceived efficacy",
+          "evidence": [{"turn_id": "demo2-05", "quote": "Putting them in two groups helps me see what I can leave until tomorrow."}],
+          "reason": "Preset illustration: the client explicitly describes how this sorting activity helps; this reports the client's view, not a measured change in sleep."
+        }
+      ]
+    }
+  },
+  {
+    "response_model": "ActivityIdentificationLLMOutput",
+    "current_turn_id": "demo2-06",
+    "output": {"new_activities": []}
+  },
+  {
+    "response_model": "CounsellorTurnLLMOutput",
+    "current_turn_id": "demo2-06",
+    "output": {"findings": []}
+  },
+  {
+    "response_model": "SummaryLLMOutput",
+    "current_turn_id": null,
+    "output": {
+      "results": [
+        {
+          "dimension": "Accurate Empathy",
+          "activity_reference": null,
+          "summary_status": "insufficient_evidence",
+          "rating_label": null,
+          "evidence": [{"turn_id": "demo2-02", "quote": "The two worries feel equally urgent tonight, even though the bill is not here yet."}],
+          "counterevidence": [],
+          "reason": "Preset illustration: one relevant reflection is saved, but it does not provide a representative empathy anchor for this short sample."
+        },
+        {
+          "dimension": "Therapist accepts/validates Patient",
+          "activity_reference": null,
+          "summary_status": "rated",
+          "rating_label": "Somewhat salient",
+          "evidence": [{"turn_id": "demo2-02", "quote": "Feeling overwhelmed makes sense when both seem to demand an answer at once."}],
+          "counterevidence": [],
+          "reason": "Preset illustration: the recorded response validates the stated feeling to a limited extent within this short exchange."
+        },
+        {
+          "dimension": "Mutual trust and respect",
+          "activity_reference": null,
+          "summary_status": "insufficient_evidence",
+          "rating_label": null,
+          "evidence": [],
+          "counterevidence": [],
+          "reason": "Preset illustration: no evidence for this target was registered. Agreement on a note alone does not establish reciprocal trust and respect."
+        },
+        {
+          "dimension": "Client engagement in the activity",
+          "activity_reference": {"activity_id": "ACTIVITY_01", "activity_label": "Write a two-group note for tonight and tomorrow"},
+          "summary_status": "rated",
+          "rating_label": "Somewhat salient",
+          "evidence": [{"turn_id": "demo2-05", "quote": "My note says: Tonight, set the alarm. Tomorrow, ask about the repair bill."}],
+          "counterevidence": [],
+          "reason": "Preset illustration: the client carries out the brief written activity. This single contribution supports limited engagement evidence, not a claim about lasting benefit."
+        }
+      ]
+    }
+  }
+],
+"fictional-scripted-demo-003": [
+  {
+    "response_model": "ActivityIdentificationLLMOutput",
+    "current_turn_id": "demo3-01",
+    "output": {"new_activities": []}
+  },
+  {
+    "response_model": "ClientBondOnlyTurnLLMOutput",
+    "current_turn_id": "demo3-01",
+    "output": {"findings": []}
+  },
+  {
+    "response_model": "ActivityIdentificationLLMOutput",
+    "current_turn_id": "demo3-02",
+    "output": {"new_activities": []}
+  },
+  {
+    "response_model": "CounsellorBondOnlyTurnLLMOutput",
+    "current_turn_id": "demo3-02",
+    "output": {
+      "findings": [
+        {
+          "dimension": "Accurate Empathy",
+          "activity_reference": null,
+          "finding_status": "evidence_only",
+          "rating_label": null,
+          "evidence": [{"turn_id": "demo3-02", "quote": "It sounds as though you are angry with your friend and want to stop these calls."}],
+          "reason": "Preset illustration: the counsellor introduces anger and a wish to stop calls although the client expressed enjoying them and feeling torn about ending them."
+        }
+      ]
+    }
+  },
+  {
+    "response_model": "ActivityIdentificationLLMOutput",
+    "current_turn_id": "demo3-03",
+    "output": {"new_activities": []}
+  },
+  {
+    "response_model": "ClientBondOnlyTurnLLMOutput",
+    "current_turn_id": "demo3-03",
+    "output": {
+      "findings": [
+        {
+          "dimension": "Client confirmation/disconfirmation",
+          "activity_reference": null,
+          "finding_status": "rated",
+          "rating_label": "Clear disconfirmation",
+          "evidence": [
+            {"turn_id": "demo3-02", "quote": "It sounds as though you are angry with your friend and want to stop these calls."},
+            {"turn_id": "demo3-03", "quote": "No, I am not angry and I do not want to stop talking."}
+          ],
+          "reason": "Preset illustration: the client directly rejects the counsellor's specific preceding understanding."
+        }
+      ]
+    }
+  },
+  {
+    "response_model": "ActivityIdentificationLLMOutput",
+    "current_turn_id": "demo3-04",
+    "output": {"new_activities": [{"activity_id": "ACTIVITY_01", "activity_label": "Practise a short sentence to close a call"}]}
+  },
+  {
+    "response_model": "CounsellorTurnLLMOutput",
+    "current_turn_id": "demo3-04",
+    "output": {
+      "findings": [
+        {
+          "dimension": "Accurate Empathy",
+          "activity_reference": null,
+          "finding_status": "evidence_only",
+          "rating_label": null,
+          "evidence": [{"turn_id": "demo3-04", "quote": "I got that wrong: you value these calls and want to protect your reading time, not stop talking to your friend."}],
+          "reason": "Preset illustration: the counsellor explicitly recognises the misunderstanding and revises it in line with the client's correction."
+        },
+        {
+          "dimension": "Therapist accepts/validates Patient",
+          "activity_reference": null,
+          "finding_status": "evidence_only",
+          "rating_label": null,
+          "evidence": [{"turn_id": "demo3-04", "quote": "Wanting a limit does not mean you care less."}],
+          "reason": "Preset illustration: the response supports the client's wish for a limit without judging it as lack of care."
+        }
+      ]
+    }
+  },
+  {
+    "response_model": "ActivityIdentificationLLMOutput",
+    "current_turn_id": "demo3-05",
+    "output": {"new_activities": []}
+  },
+  {
+    "response_model": "ClientTurnLLMOutput",
+    "current_turn_id": "demo3-05",
+    "output": {
+      "findings": [
+        {
+          "dimension": "Activity agreement/disagreement",
+          "activity_reference": {"activity_id": "ACTIVITY_01", "activity_label": "Practise a short sentence to close a call"},
+          "finding_status": "rated",
+          "rating_label": "Clear activity agreement",
+          "evidence": [
+            {"turn_id": "demo3-04", "quote": "Could we try saying one short closing sentence?"},
+            {"turn_id": "demo3-05", "quote": "Yes, let us try a closing sentence."}
+          ],
+          "reason": "Preset illustration: the client explicitly accepts the proposed sentence practice; the later awkwardness is feedback, not a withdrawal of this agreement."
+        },
+        {
+          "dimension": "Client engagement in the activity",
+          "activity_reference": {"activity_id": "ACTIVITY_01", "activity_label": "Practise a short sentence to close a call"},
+          "finding_status": "evidence_only",
+          "rating_label": null,
+          "evidence": [{"turn_id": "demo3-05", "quote": "I will say: I have enjoyed talking, and I am going to read now."}],
+          "reason": "Preset illustration: the client contributes a specific sentence for the agreed practice; the text does not prove that it was said aloud or used in a real call."
+        },
+        {
+          "dimension": "Client-expressed activity relevance",
+          "activity_reference": {"activity_id": "ACTIVITY_01", "activity_label": "Practise a short sentence to close a call"},
+          "finding_status": "rated",
+          "rating_label": "Clear client-perceived relevance",
+          "evidence": [{"turn_id": "demo3-05", "quote": "The words fit what I need, but saying them aloud feels awkward."}],
+          "reason": "Preset illustration: the client explicitly describes the sentence as fitting their need while separately reporting difficulty with speaking it."
+        }
+      ]
+    }
+  },
+  {
+    "response_model": "ActivityIdentificationLLMOutput",
+    "current_turn_id": "demo3-06",
+    "output": {"new_activities": []}
+  },
+  {
+    "response_model": "CounsellorTurnLLMOutput",
+    "current_turn_id": "demo3-06",
+    "output": {
+      "findings": [
+        {
+          "dimension": "Activity-related responsiveness",
+          "activity_reference": {"activity_id": "ACTIVITY_01", "activity_label": "Practise a short sentence to close a call"},
+          "finding_status": "rated",
+          "rating_label": "Activity-responsive use of feedback",
+          "evidence": [
+            {"turn_id": "demo3-05", "quote": "The words fit what I need, but saying them aloud feels awkward."},
+            {"turn_id": "demo3-06", "quote": "We can slow the sentence down and stop after the first part. You do not need to say the whole line at once."}
+          ],
+          "reason": "Preset illustration: the counsellor adjusts the pace and length of practice after the client reports awkwardness; the response does not establish that the adjustment helped."
+        }
+      ]
+    }
+  },
+  {
+    "response_model": "SummaryLLMOutput",
+    "current_turn_id": null,
+    "output": {
+      "results": [
+        {
+          "dimension": "Accurate Empathy",
+          "activity_reference": null,
+          "summary_status": "insufficient_evidence",
+          "rating_label": null,
+          "evidence": [{"turn_id": "demo3-04", "quote": "I got that wrong: you value these calls and want to protect your reading time, not stop talking to your friend."}],
+          "counterevidence": [{"turn_id": "demo3-02", "quote": "It sounds as though you are angry with your friend and want to stop these calls."}],
+          "reason": "Preset illustration: the registered evidence preserves an initial misunderstanding and its correction, but this limited sequence does not justify a representative empathy anchor."
+        },
+        {
+          "dimension": "Therapist accepts/validates Patient",
+          "activity_reference": null,
+          "summary_status": "rated",
+          "rating_label": "Somewhat salient",
+          "evidence": [{"turn_id": "demo3-04", "quote": "Wanting a limit does not mean you care less."}],
+          "counterevidence": [],
+          "reason": "Preset illustration: the saved statement provides limited support for the client's wish to set a boundary without treating it as lack of care."
+        },
+        {
+          "dimension": "Mutual trust and respect",
+          "activity_reference": null,
+          "summary_status": "insufficient_evidence",
+          "rating_label": null,
+          "evidence": [],
+          "counterevidence": [],
+          "reason": "Preset illustration: no mutual-trust-and-respect evidence was registered. Correcting a misunderstanding and accepting an exercise do not by themselves establish reciprocal trust."
+        },
+        {
+          "dimension": "Client engagement in the activity",
+          "activity_reference": {"activity_id": "ACTIVITY_01", "activity_label": "Practise a short sentence to close a call"},
+          "summary_status": "rated",
+          "rating_label": "Somewhat salient",
+          "evidence": [{"turn_id": "demo3-05", "quote": "I will say: I have enjoyed talking, and I am going to read now."}],
+          "counterevidence": [],
+          "reason": "Preset illustration: offering a specific sentence shows some engagement in the practice activity; it does not prove spoken completion or success in a later call."
+        }
+      ]
+    }
+  }
+]
+}

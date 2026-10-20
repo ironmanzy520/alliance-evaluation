@@ -1,0 +1,203 @@
+{
+  "$defs": {
+    "ClientBondSummaryEvidenceFinding": {
+      "additionalProperties": false,
+      "description": "Dyadic Mutual trust and respect evidence available from a client turn.",
+      "properties": {
+        "dimension": {
+          "const": "Mutual trust and respect",
+          "title": "Dimension",
+          "type": "string"
+        },
+        "activity_reference": {
+          "title": "Activity Reference",
+          "type": "null"
+        },
+        "finding_status": {
+          "const": "evidence_only",
+          "title": "Finding Status",
+          "type": "string"
+        },
+        "rating_label": {
+          "title": "Rating Label",
+          "type": "null"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceSpan"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dimension",
+        "activity_reference",
+        "finding_status",
+        "rating_label",
+        "evidence",
+        "reason"
+      ],
+      "title": "ClientBondSummaryEvidenceFinding",
+      "type": "object"
+    },
+    "ConfirmationRatedFinding": {
+      "additionalProperties": false,
+      "description": "Turn-level interaction events for Client confirmation/disconfirmation.\n\nConfirmation/disconfirmation sequences follow Elliott et al. (2023). The three\ntextual categories are project codes for the available dialogue evidence.",
+      "properties": {
+        "dimension": {
+          "const": "Client confirmation/disconfirmation",
+          "title": "Dimension",
+          "type": "string"
+        },
+        "activity_reference": {
+          "title": "Activity Reference",
+          "type": "null"
+        },
+        "finding_status": {
+          "const": "rated",
+          "title": "Finding Status",
+          "type": "string"
+        },
+        "rating_label": {
+          "enum": [
+            "Clear confirmation",
+            "Partial confirmation",
+            "Clear disconfirmation"
+          ],
+          "title": "Rating Label",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceSpan"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dimension",
+        "activity_reference",
+        "finding_status",
+        "rating_label",
+        "evidence",
+        "reason"
+      ],
+      "title": "ConfirmationRatedFinding",
+      "type": "object"
+    },
+    "EvidenceSpan": {
+      "additionalProperties": false,
+      "description": "A verifiable evidence span containing only its source turn ID and exact quote.",
+      "properties": {
+        "turn_id": {
+          "minLength": 1,
+          "title": "Turn Id",
+          "type": "string"
+        },
+        "quote": {
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        }
+      },
+      "required": [
+        "turn_id",
+        "quote"
+      ],
+      "title": "EvidenceSpan",
+      "type": "object"
+    },
+    "PerceivedAcceptanceRatedFinding": {
+      "additionalProperties": false,
+      "description": "Events in which the client explicitly expresses perceived acceptance.\n\nThe theoretical role of client perception follows Rogers (1957/1992) and Barrett-Lennard\n(1962). The three textual categories are project adaptations, not Relationship Inventory scores.",
+      "properties": {
+        "dimension": {
+          "const": "Client-perceived acceptance",
+          "title": "Dimension",
+          "type": "string"
+        },
+        "activity_reference": {
+          "title": "Activity Reference",
+          "type": "null"
+        },
+        "finding_status": {
+          "const": "rated",
+          "title": "Finding Status",
+          "type": "string"
+        },
+        "rating_label": {
+          "enum": [
+            "Clear perceived acceptance",
+            "Mixed/conditional perceived acceptance",
+            "Clear perceived non-acceptance"
+          ],
+          "title": "Rating Label",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceSpan"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dimension",
+        "activity_reference",
+        "finding_status",
+        "rating_label",
+        "evidence",
+        "reason"
+      ],
+      "title": "PerceivedAcceptanceRatedFinding",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Bond-only findings for a client turn when no Activity has been registered.",
+  "properties": {
+    "findings": {
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/ConfirmationRatedFinding"
+          },
+          {
+            "$ref": "#/$defs/PerceivedAcceptanceRatedFinding"
+          },
+          {
+            "$ref": "#/$defs/ClientBondSummaryEvidenceFinding"
+          }
+        ]
+      },
+      "title": "Findings",
+      "type": "array"
+    }
+  },
+  "required": [
+    "findings"
+  ],
+  "title": "ClientBondOnlyTurnLLMOutput",
+  "type": "object"
+}
